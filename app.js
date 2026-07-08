@@ -3,25 +3,25 @@ const GAS_URL = "https://script.google.com/macros/s/AKfycbyB7Uf9V9knZRrB8m4jig1z
 
 // Zaměstnanci a jejich PINy
 const EMPLOYEES = {
-  "1001": "Centrální tablet",
-  "1002": "Filip Dvořáček",
-  "1003": "Pavel Krchňavý",
-  "1004": "Tereza Smutná",
-  "1005": "Veronika Urbanová",
-  "1006": "Jan Balek",
-  "1007": "Marie Pölzerová",
-  "1008": "Lea Vlčková",
-  "1009": "Jitka Urbánková",
-  "1010": "Eliška Pölzerová",
-  "1011": "Markéta Devetterová",
-  "1012": "Ester Hlaváčková",
-  "1013": "Jan Pelán"
+  "2001": "Centrální tablet",
+  "2002": "Filip Dvořáček",
+  "2003": "Pavel Krchňavý",
+  "2004": "Tereza Sovová",
+  "2005": "Veronika Urbanová",
+  "2006": "Jan Balek",
+  "2007": "Marie Pölzerová",
+  "2008": "Lea Vlčková",
+  "2009": "Jitka Urbánková",
+  "2010": "Eliška Pölzerová",
+  "2011": "Markéta Devetterová",
+  "2012": "Ester Hlaváčková",
+  "2013": "Jan Pelán"
 };
 
 // Produkty rozdělené podle dodavatelů
 const PRODUCTS = {
-  "Charis": [
-    { name: "Pohlednice Charis", price: 40 },
+  "Plné vstupné": [
+    { name: "Celokonferenční vstup", price: 40 },
     { name: "Samolepky Charis", price: 20 },
     { name: "Oplatky", price: 90 },
     { name: "Prapor VELKÝ", price: 430 },
@@ -32,14 +32,14 @@ const PRODUCTS = {
     { name: "Gumičky 2ks", price: 150 },
     { name: "Plátěnka", price: 120 }
   ],
-  "Godzone kids": [
+  "Snížené vstupné": [
     { name: "detská mikina SOM ORIGINÁL", price: 485 },
     { name: "detská mikina OVOCIE DUCHA zelená", price: 485 },
     { name: "detská mikina OVOCIE DUCHA růžová", price: 485 },
     { name: "detská šiltovka SOM ORIGINÁL", price: 320 },
     { name: "detské cd ODVÁŽNY PRIATEĽ", price: 250 },
     ],
-    "Godzone": [
+    "ZDARMA": [
     { name: "3 rôzne odznaky spolu", price: 50 },
     { name: "cd VITAJ V SLOBODE", price: 250 },
     { name: "cd NIE SI NA TO SÁM", price: 250 },
@@ -69,7 +69,7 @@ const PRODUCTS = {
     { name: "plátenka MORNING MERCY", price: 385 },
     { name: "plátenka HOPE RUNNER", price: 385 }
   ],
-  "Solí ze mě": [
+  "Parkování": [
     { name: "Přání s obálkou (různé druhy)", price: 85 },
     { name: "Pohlednice (různé druhy)", price: 40 },
     { name: "Záložky (různé druhy)", price: 20 },
