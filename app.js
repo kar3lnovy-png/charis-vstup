@@ -149,8 +149,93 @@ function renderSupplierTabs() {
 }
 
 // =================== PRODUKTY ===================
+// =================== PRODUKTY ===================
 function renderProducts() {
   productGridEl.innerHTML = "";
+
+  // 1. Zvláštní chování pro záložku "Dar" s virtuální klávesnicí na obrazovce
+  if (activeSupplier === "Dar") {
+    let donationValue = ""; // Proměnná pro ukládání zadané částky
+    
+    const formDiv = document.createElement("div");
+    formDiv.className = "col-span-2 sm:col-span-3 lg:col-span-4 bg-white p-4 rounded-2xl border border-blue-100 flex flex-col items-center justify-center min-h-[300px]";
+    
+    formDiv.innerHTML = `
+      <h2 class="text-xl font-bold text-blue-800 mb-2">Zadat hodnotu daru</h2>
+      
+      <div id="donation-display-container" class="text-4xl font-bold text-blue-900 mb-6 h-12 flex items-center justify-center border-b-2 border-blue-200 w-64 pb-2 transition-colors">
+        <span id="donation-display">0</span> <span class="ml-2 text-2xl text-slate-500 font-medium">Kč</span>
+      </div>
+      
+      <div class="grid grid-cols-3 gap-3 mb-6 w-64">
+        <button class="pin-btn don-btn" data-num="1">1</button>
+        <button class="pin-btn don-btn" data-num="2">2</button>
+        <button class="pin-btn don-btn" data-num="3">3</button>
+        <button class="pin-btn don-btn" data-num="4">4</button>
+        <button class="pin-btn don-btn" data-num="5">5</button>
+        <button class="pin-btn don-btn" data-num="6">6</button>
+        <button class="pin-btn don-btn" data-num="7">7</button>
+        <button class="pin-btn don-btn" data-num="8">8</button>
+        <button class="pin-btn don-btn" data-num="9">9</button>
+        <button id="don-clear" class="pin-btn bg-blue-100 text-blue-700">C</button>
+        <button class="pin-btn don-btn" data-num="0">0</button>
+        <button id="don-back" class="pin-btn bg-blue-100 text-blue-700">⌫</button>
+      </div>
+      
+      <button id="add-donation-btn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 w-64 rounded-xl transition">
+        Přidat do košíku
+      </button>
+    `;
+    productGridEl.appendChild(formDiv);
+
+    const displayEl = document.getElementById("donation-display");
+    const displayContainerEl = document.getElementById("donation-display-container");
+
+    // Aktualizace čísla na displeji
+    const updateDisplay = () => {
+      displayEl.textContent = donationValue === "" ? "0" : donationValue;
+    };
+
+    // Odchycení kliknutí na číslice
+    formDiv.querySelectorAll(".don-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        if (donationValue.length >= 6) return; // Omezení na max 999 999 Kč
+        if (donationValue === "" && btn.dataset.num === "0") return; // Nelze zadat nulu jako první
+        donationValue += btn.dataset.num;
+        updateDisplay();
+      });
+    });
+
+    // Tlačítko zpět (vymaže poslední znak)
+    document.getElementById("don-back").addEventListener("click", () => {
+      donationValue = donationValue.slice(0, -1);
+      updateDisplay();
+    });
+
+    // Tlačítko C (vymaže vše)
+    document.getElementById("don-clear").addEventListener("click", () => {
+      donationValue = "";
+      updateDisplay();
+    });
+
+    // Zařazení do košíku
+    document.getElementById("add-donation-btn").addEventListener("click", () => {
+      const amount = parseInt(donationValue);
+      if (amount > 0) {
+        addToCart(activeSupplier, { name: "Dobrovolný dar", price: amount });
+        donationValue = ""; // Vymazat po přidání
+        updateDisplay();
+      } else {
+        // Vizuální upozornění na prázdnou hodnotu - podtržítko zčervená
+        displayContainerEl.classList.replace("border-blue-200", "border-red-500");
+        setTimeout(() => displayContainerEl.classList.replace("border-red-500", "border-blue-200"), 400);
+      }
+    });
+
+    return; // Důležité: ukončíme funkci, aby se pod klávesnici už nevykreslovaly standardní karty
+  }
+
+  // 2. Standardní chování pro ostatní záložky (Produkty)
   PRODUCTS[activeSupplier].forEach(product => {
     const card = document.createElement("div");
     card.className = "product-card";
