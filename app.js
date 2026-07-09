@@ -40,7 +40,7 @@ const PRODUCTS = {
     { name: "KNĚZ", price: 0 },
     { name: "JEPTIŠKA", price: 0 },
     { name: "SEXY JEPTIŠKA", price: 0 },
-    { name: "PŘÍMLUVCE", price: 0 },
+    { name: "ZTP + doprovod", price: 0 },
   ],
   "Parkování": [
     { name: "Parkování celokonferenční", price: 440 },
