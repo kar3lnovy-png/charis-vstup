@@ -38,7 +38,8 @@ const PRODUCTS = {
     { name: "KNĚZ", price: 0 },
     { name: "JEPTIŠKA", price: 0 },
     { name: "SEXY JEPTIŠKA", price: 0 },
-    { name: "ZTP + doprovod", price: 0 },
+    { name: "ZDARMA snížené jednodenní", price: 0 },
+    { name: "ZDARMA snížené celokonferenční", price: 0 },
   ],
 };
 
