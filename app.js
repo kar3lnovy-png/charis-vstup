@@ -26,8 +26,6 @@ const PRODUCTS = {
     { name: "Snížený celokonferenční vstup", price: 700 },
   ],
   "Jednodenní": [
-    { name: "Plné PÁTEK", price: 400 },
-    { name: "Snížené PÁTEK", price: 300 },
     { name: "Plné SOBOTA", price: 400 },
     { name: "Snížené SOBOTA", price: 300 },
     { name: "Plné NEDĚLE", price: 400 },
